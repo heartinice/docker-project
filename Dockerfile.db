@@ -1,0 +1,14 @@
+# Базовый образ Linux с минимальным окружением
+FROM ubuntu:22.04
+
+# Устанавливаем SQLite
+RUN apt-get update && apt-get install -y sqlite3 && rm -rf /var/lib/apt/lists/*
+
+# Устанавливаем рабочую директорию
+WORKDIR /data
+
+# Копируем файл базы данных
+COPY django-todo/db.sqlite3 /data/db.sqlite3
+
+# Указываем команду для проверки работы базы данных
+CMD ["sqlite3", "/data/db.sqlite3"]
