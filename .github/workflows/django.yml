@@ -34,5 +34,6 @@ jobs:
 
     - name: Run Django tests
       run: |
+        cd ./django-todo  # Перемещаемся в папку проекта Django
         python manage.py test
 
